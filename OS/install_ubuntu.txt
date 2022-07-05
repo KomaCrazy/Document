@@ -1,0 +1,10 @@
+#intstall this link 
+
+https://old-releases.ubuntu.com/releases/18.04.5/ubuntu-18.04-desktop-amd64.iso
+https://rufus.ie/th/
+
+#open Rufus
+-select OS 
+-Start 
+
+#Boots usb in Pc

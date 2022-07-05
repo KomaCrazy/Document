@@ -1,0 +1,65 @@
+worning install first ROS
+#python libraries
+sudo apt-get install python3-pip
+sudo apt-get install python-pip
+pip install tinydb
+pip install pyyaml
+pip install pillow
+pip install flask
+pip install flask_cors
+
+pip3 install tinydb
+pip3 install pyyaml
+pip3 install flask
+pip3 install flask_cors
+
+sudo apt update
+sudo apt install python-rospkg
+sudo apt-get install ros-melodic-costmap-2d
+sudo apt-get install ros-melodic-serial
+sudo apt-get install ros-melodic-actionlib
+sudo apt-get install ros-melodic-robot-localization
+sudo apt-get install ros-melodic-amcl
+sudo apt-get install ros-melodic-map-server
+sudo apt-get install ros-melodic-move-base
+sudo apt-get install ros-melodic-rosbridge-suite
+sudo apt-get install ros-melodic-std-msgs
+sudo apt-get install ros-melodic-rosserial
+sudo apt-get install ros-melodic-rosbridge-server
+sudo apt-get install ros-melodic-slam-gmapping
+sudo apt-get install ros-melodic-global-planner
+sudo apt-get install ros-melodic-dwa-local-planner
+
+sudo apt install python-gobject
+sudo apt install libtool-bin
+sudo apt install python-gobject-2-dev
+sudo apt install autoconf
+sudo apt-get install libgudev-1.0-dev
+
+#Create linorobot_ws
+source /opt/ros/melodic/setup.bash
+mkdir -p ~/linorobot_ws/src
+cd ~/linorobot_ws/
+catkin_make
+source devel/setup.bash
+echo $ROS_PACKAGE_PATH /home/pi/linorobot_ws/src:/opt/ros/melodic/share
+
+git clone https://github.com/nzjrs/python-gudev.git
+cd python-gudev
+./autogen.sh
+make
+sudo make install
+rosrun lino_udev lino_udev.py
+sudo cp 58-lino.rules /etc/udev/rules.d/58-lino.rules
+sudo service udev reload
+sudo service udev restart
+
+#install robot_upstart for startup system
+sudo apt-get install ros-melodic-robot-upstart
+cd linorobot_ws
+source devel/setup.bash
+rosrun robot_upstart install linorobot/launch/bringup.launch
+sudo systemctl daemon-reload && sudo systemctl start linorobot
+
+
+
