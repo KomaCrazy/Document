@@ -17,6 +17,5 @@
 <code><img height="30" alt="vue" src="https://github.com/KomaCrazy/Document/blob/main/image/vue.png"></code>
 # Contact
 
-| - [FACBOOK ](https://www.facebook.com/profile.php?id=100008494095921)
+ - [Facbook](https://www.facebook.com/profile.php?id=100008494095921)
 
-| - [FACBOOK ](https://www.facebook.com/profile.php?id=100008494095921)
