@@ -1,0 +1,7 @@
+crontab -e ใช้เพื่อไป config ให้ star up
+	@reboot Sleep 3 && cd {pathfile} && python3 app.py
+
+chmod 777* ใช้เพื่อ unlock file
+sudo service cron status
+roslaunch lslidar_c16_decoder lslidar_c16.launch --screen
+sudo nano /etc/dhcpcd.conf use for setting static ip

@@ -1,0 +1,137 @@
+worning install first ROS
+#python libraries
+sudo apt-get install python3-pip
+sudo apt-get install python-pip
+pip install tinydb
+pip install pyyaml
+pip install pillow
+pip install flask
+pip install flask_cors
+pip install rospkg
+
+pip3 install tinydb
+pip3 install pyyaml
+pip3 install flask
+pip3 install flask_cors
+pip3 install rospkg
+pip3 install rospy-message-converter
+
+sudo apt update
+sudo apt install python-rospkg
+sudo apt-get install ros-melodic-costmap-2d
+sudo apt-get install ros-melodic-serial
+sudo apt-get install ros-melodic-actionlib
+sudo apt-get install ros-melodic-robot-localization
+sudo apt-get install ros-melodic-amcl
+sudo apt-get install ros-melodic-map-server
+sudo apt-get install ros-melodic-move-base
+sudo apt-get install ros-melodic-rosbridge-suite
+sudo apt-get install ros-melodic-std-msgs
+sudo apt-get install ros-melodic-rosserial
+sudo apt-get install ros-melodic-rosbridge-server
+sudo apt-get install ros-melodic-slam-gmapping
+sudo apt-get install ros-melodic-global-planner
+sudo apt-get install ros-melodic-dwa-local-planner
+
+sudo apt install python-gobject
+sudo apt install libtool-bin
+sudo apt install python-gobject-2-dev
+sudo apt install autoconf
+sudo apt-get install libgudev-1.0-dev
+
+--------new-------
+sudo apt install ros-melodic-pcl-ros 
+sudo apt-get install ros-melodic-interactive-markers
+sudo apt install ros-melodic-cv-bridge
+sudo apt install ros-melodic-filters
+sudo apt install ros-melodic-roslint
+sudo apt-get install libsuitesparse-dev
+sudo apt install ros-melodic-libg2o
+
+
+
+#Create linorobot_ws
+source /opt/ros/melodic/setup.bash
+mkdir -p ~/linorobot_ws/src
+cd ~/linorobot_ws/
+catkin_make
+source devel/setup.bash
+echo $ROS_PACKAGE_PATH /home/pi/linorobot_ws/src:/opt/ros/melodic/share
+
+git clone https://github.com/nzjrs/python-gudev.git
+cd python-gudev
+./autogen.sh
+make
+sudo make install
+rosrun lino_udev lino_udev.py
+sudo cp 58-lino.rules /etc/udev/rules.d/58-lino.rules
+sudo service udev reload
+sudo service udev restart
+
+#install robot_upstart for startup system
+sudo apt-get install ros-melodic-robot-upstart
+cd linorobot_ws
+source devel/setup.bash
+rosrun robot_upstart install linorobot/launch/bringup.launch
+sudo systemctl daemon-reload && sudo systemctl start linorobot
+sudo nano /etc/ros/melodic/linorobot.d/bringup.launch
+copy launch file
+-------------------------------
+
+<launch>
+    <node pkg="rosbridge_server" type="rosbridge_websocket" name="rosbridge_websocket"/>
+    <!-- Start ROS communication between the robot's computer and Linorobot base -->
+    <node pkg="rosserial_python" name="rosserial_lino" type="serial_node.py" output="screen">
+        <param name="port" value="/dev/linobase" />
+        <param name="baud" value="57600" />
+    </node>
+    <!-- IMU Relay and Filter -->
+    <!--<include file="$(find linorobot)/launch/include/imu/imu.launch" />-->
+    <!--<node pkg="bosch_imu_driver" type="bosch_imu_node.py" name="bosch_imu_node" output="screen"></node>-->
+    <!-- Publish Linorobot odometry -->
+    <node pkg="linorobot" name="lino_base_node" type="lino_base_node"></node>
+    <!-- <node pkg="um7" type="um7_driver" name="um7_driver">
+        <param name="port" type="string" value="/dev/um7"/>
+        <param name="mag_updates" type="bool" value="true"/>
+        <param name="zero_gyros" type="bool" value="true"/>
+        <param name="set_mag_ref" type="bool" value="true"/>
+        <param name="reset_ekf" type="bool" value="true"/>
+        <param name="frame_id" value="imu_link"/>
+        <param name="tf_ned_to_enu" value="true"/>
+        <param name="update_rate" value="25"/>
+    </node> -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_imu_link" args="0.0 0 0 0 0 0 /base_footprint /imu_link"/>
+    <!-- Publish static transform from base_footprint to base_link -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.098 0 0 0 /base_footprint /base_link"/>
+    <!-- Odom-IMU Extended Kalman Filter-->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+        <remap from="odometry/filtered" to="odom" />
+        <rosparam command="load" file="$(find linorobot)/param/ekf/robot_localization.yaml" />
+    </node>
+    <!-- Run Linorobot compatible laser drivers -->
+    <include file="$(find linorobot)/launch/include/laser.launch" />
+    <node pkg="tf2_web_republisher" type="tf2_web_republisher" name="tf2_web_republisher" />
+    <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter">
+        <rosparam command="load" file="$(find linorobot)/param/f180.yaml" />
+        <remap from="scan" to="base_scan" />
+        <remap from="scan_filtered" to="scan" />
+    </node>
+    <node pkg="agv_interface" name="agv_interface" type="agvctl.py" output="screen">
+    </node> 
+</launch>
+
+
+------------------------------
+
+sudo nano .bashrc
+source /home/pi/linorobot_ws/devel/setup.bash
+
+sudo nano /usr/sbin/linorobot-start
+
+inline
+-------------------------------
+PID=$! 
+rosrun interactive_marker_proxy proxy topic_ns:=/simple_marker target_frame:=/map &
+
+------------------------------
+

@@ -1,0 +1,17 @@
+sudo apt update
+sudo apt install nginx
+sudo apt-get install libpcap-dev
+
+mkdir nginx && cd nginx && mkdir agv_user_interface
+cd /nginx/agv_user_interface
+nano index.html
+#add some text to debug test
+sudo nano /etc/nginx/sites-available/default
+
+------------Edit listen and path ------------
+listen 7777 
+listen [::] 777
+
+and path to 
+
+/home/pi/nginx/agv_user_interface
