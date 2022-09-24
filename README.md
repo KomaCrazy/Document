@@ -6,9 +6,6 @@
 ##### | My Name is Phantharat  Monthain
 ##### | Education : Business computer
 
-<code>
-<input placeholder="user" size="6" style="text-align: center;">
-</code>
 
 
 # Programming Languages
