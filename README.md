@@ -6,6 +6,11 @@
 ##### | My Name is Phantharat  Monthain
 ##### | Education : Business computer
 
+<code>
+<input placeholder="user" size="6" style="text-align: center;">
+</code>
+
+
 # Programming Languages
 <code><img height="30" alt="html" src="https://github.com/KomaCrazy/Document/blob/main/image/html.png"></code>
 <code><img height="30" alt="css" src="https://github.com/KomaCrazy/Document/blob/main/image/css.png"></code>
