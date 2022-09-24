@@ -1,14 +1,12 @@
 # Profile 🌏
 
 ![Banner](/image/banner.jpg)
-
-[![Facebook Badge]
-
-
+#### About Me
+### 
 
 <code>
 <img height="20" alt="javascript" src="https://github.com/KomaCrazy/Document/blob/main/image/js.png">
-</code> JavaScript
+</code> 
 
 <code>
 <img height="20" alt="javascript" src="https://github.com/KomaCrazy/Document/blob/main/image/node.png">
