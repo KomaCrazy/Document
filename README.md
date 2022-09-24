@@ -1,4 +1,4 @@
-# Profile 🌏
+# My world 🌏
 
 ![Banner](/image/banner.jpg)
 ### About Me
@@ -6,18 +6,17 @@
 ##### | My Name is Phantharat  Monthain
 ##### | Education : Business computer
 
-
- 
-
-
-
 # Programming Languages
-<code><img height="35" alt="html" src="https://github.com/KomaCrazy/Document/blob/main/image/html.png"></code>
-<code><img height="35" alt="css" src="https://github.com/KomaCrazy/Document/blob/main/image/css.png"></code>
-<code><img height="35" alt="javascript" src="https://github.com/KomaCrazy/Document/blob/main/image/js.png"></code>
-<code><img height="35" alt="node" src="https://github.com/KomaCrazy/Document/blob/main/image/node.png"></code>
-<code><img height="35" alt="go" src="https://github.com/KomaCrazy/Document/blob/main/image/Go.png"></code>
-<code><img height="35" alt="python" src="https://github.com/KomaCrazy/Document/blob/main/image/python.png"></code>
-<code><img height="35" alt="sqlite3" src="https://github.com/KomaCrazy/Document/blob/main/image/sqlite3.png"></code>
-<code><img height="35" alt="vue" src="https://github.com/KomaCrazy/Document/blob/main/image/vue.png"></code>
-# Blog 
+<code><img height="30" alt="html" src="https://github.com/KomaCrazy/Document/blob/main/image/html.png"></code>
+<code><img height="30" alt="css" src="https://github.com/KomaCrazy/Document/blob/main/image/css.png"></code>
+<code><img height="30" alt="javascript" src="https://github.com/KomaCrazy/Document/blob/main/image/js.png"></code>
+<code><img height="30" alt="node" src="https://github.com/KomaCrazy/Document/blob/main/image/node.png"></code>
+<code><img height="30" alt="go" src="https://github.com/KomaCrazy/Document/blob/main/image/Go.png"></code>
+<code><img height="30" alt="python" src="https://github.com/KomaCrazy/Document/blob/main/image/python.png"></code>
+<code><img height="30" alt="sqlite3" src="https://github.com/KomaCrazy/Document/blob/main/image/sqlite3.png"></code>
+<code><img height="30" alt="vue" src="https://github.com/KomaCrazy/Document/blob/main/image/vue.png"></code>
+# Contact
+
+| - [FACBOOK ](https://www.facebook.com/profile.php?id=100008494095921)
+
+| - [FACBOOK ](https://www.facebook.com/profile.php?id=100008494095921)
