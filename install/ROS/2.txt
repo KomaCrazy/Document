@@ -122,7 +122,7 @@ copy launch file
 
 
 ------------------------------
-
+cd
 sudo nano .bashrc
 source /home/pi/linorobot_ws/devel/setup.bash
 
